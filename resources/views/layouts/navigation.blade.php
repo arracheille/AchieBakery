@@ -32,6 +32,16 @@
               <li>
                 <a href="{{ route('profile.edit') }}" class="btn-icon"><i class="fa-solid fa-user"></i></a>
               </li>
+
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <a :href="route('logout')" class="btn"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    {{ __('Keluar') }}
+                </a>
+            </form>
             @else
               <li>
                 <a href="{{ route('login') }}" class="btn-icon"><i class="fa-solid fa-user"></i></a>

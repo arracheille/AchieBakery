@@ -24,14 +24,14 @@
           <a href="#" class="underline">Tentang Achie Bakery</a>
         </div>
         <div class="footer-content about">
-          <div class="about-content">
+          <div class="about-container">
             <h5>Tentang Kami</h5>
             <p>
               Minimal pre order adalah h-3. Kami menerima pesanan setiap hari
               kecuali h-3 lebaran.
             </p>
           </div>
-          <div class="about-content">
+          <div class="about-container">
             <h5>Hubungi Kami di</h5>
             <ul class="contact-container">
               <li class="contact-content">
@@ -56,7 +56,7 @@
               </li>
             </ul>
           </div>
-          <div class="about-content">
+          <div class="about-container">
             <h5>Sertifikat Kami</h5>
             <ul class="certificates-container">
               <li class="certificates-content">
