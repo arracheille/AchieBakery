@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <head>
         <link rel="stylesheet" href="{{ asset('assets/css/auth.css') }}">
     </head>
@@ -87,4 +87,4 @@
           }
         });
       </script>    
-</x-guest-layout>
+</x-app-layout>

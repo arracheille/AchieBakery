@@ -10,10 +10,10 @@
             />
           </a>
           <ul class="nav-links">
-            <li class="nav-link"><a href="{{ route('welcome') }}">Beranda</a></li>
-            <li class="nav-link"><a href="#">Menu</a></li>
-            <li class="nav-link"><a href="#">Pilih Momenmu</a></li>
-            <li class="nav-link"><a href="#">Tentang Achie Bakery</a></li>
+            <li class="nav-link {{ Request::is('/') ? 'active' : '' }}"><a href="{{ route('welcome') }}">Beranda</a></li>
+            <li class="nav-link {{ Request::is('/category') ? 'active' : '' }}"><a href="#">Kategori</a></li>
+            <li class="nav-link {{ Request::is('/choose-your-moments') ? 'active' : '' }}"><a href="#">Pilih Momenmu</a></li>
+            <li class="nav-link {{ Request::is('/about') ? 'active' : '' }}"><a href="#">Tentang Achie Bakery</a></li>
           </ul>
         </div>
         <ul class="nav-buttons">

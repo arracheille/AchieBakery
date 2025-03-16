@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <section class="hero">
         <div class="section-container h">
           <div class="hero-container">
@@ -453,4 +453,4 @@
     @include('layouts.footer')
 
     <script src="assets/js/carousel.js"></script>
-</x-guest-layout>
+</x-app-layout>

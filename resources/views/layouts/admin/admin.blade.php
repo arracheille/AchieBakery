@@ -5,9 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Achie Bakery</title>
-
-        {{-- <title>{{ config('app.name', 'Achie Bakery') }}</title> --}}
+        <title>Achie Bakery Admin</title>
 
         <script src="https://kit.fontawesome.com/1a293db120.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,16 +16,13 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
     </head>
     <body>
-        @include('layouts.navigation')
+        @include('layouts.admin.navigation')
         
-        <main>
-            {{ $slot }}
-        </main>
-
-        @include('layouts.footer')
-
+        @include('layouts.admin.sidebar')
+        
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
         <script>

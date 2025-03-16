@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <head>
       <link rel="stylesheet" href="{{ asset('assets/css/auth.css') }}">
     </head>
@@ -64,7 +64,7 @@
         }
       });
     </script>
-</x-guest-layout>
+</x-app-layout>
 {{-- <!-- Remember Me -->
 <div class="block mt-4">
   <label for="remember_me" class="inline-flex items-center">
