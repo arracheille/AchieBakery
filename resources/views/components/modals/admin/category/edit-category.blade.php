@@ -1,7 +1,7 @@
 <div id="addCategoryModal" class="modal">
     <div class="modal-content">
         <div class="modal-title-close">
-            <h2>Tambahkan Kategori Produk</h2>
+            <h2>Edit Kategori Produk</h2>
             <span class="close" id="close-card-modal">&times;</span>
         </div>
 

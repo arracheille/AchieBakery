@@ -13,18 +13,18 @@
         </li>
         
         <li>
-            <a href="#"
+            <a href="{{ route('category.index') }}"
             ><i class="fa-solid fa-rectangle-list"></i>
             <span class="text a-poppins">Kategori & Produk</span></a
             >
 
-            <a href="#" class="child-link">
-            <span class="text a-poppins">Kategori Brownies</span></a
-            >
+            @foreach ($categories as $category)
 
-            <a href="#" class="child-link">
-            <span class="text a-poppins">Kategori Cake</span></a
-            >
+                <a href="{{ route('product.index', ['category' => $category->id_category]) }}" class="child-link">
+                    <span class="text a-poppins">Kategori {{ $category->category_name }}</span>
+                </a>
+
+            @endforeach
         </li>
         
         <li>

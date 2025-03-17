@@ -2,14 +2,10 @@
     <div class="modal-content">
         <div class="modal-title-close">
             <h2>Tambahkan Produk</h2>
-            <span class="close" onclick="closeAddProduct()">&times;</span>
+            <span class="close" id="close-card-modal">&times;</span>
         </div>
 
-        <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data" >
-            @csrf
-
-            <input type="hidden" name="category_id" value="{{ $category->id_category }}">
-
+        <form action="">
             <label for="product_img">Gambar Produk :</label>
 
             <div class="input-container">
@@ -65,10 +61,35 @@
                     Cancel
                 </button>
                 
-                <button class="btn" id="modal-submit-btn">
+                <button type="submit" class="btn" id="modal-submit-btn">
                     Submit
                 </button>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    var cardmodal = document.getElementById("addProductModal");
+    var opencard = document.getElementById("add-card");
+    var cardexit = document.getElementById("close-card-modal");
+    var cardcancel = document.getElementById("cancel-card-modal");
+
+    opencard.onclick = function () {
+        cardmodal.style.display = "block";
+    };
+
+    cardexit.onclick = function () {
+        cardmodal.style.display = "none";
+    };
+
+    cardcancel.onclick = function () {
+        cardmodal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+        if (event.target == cardmodal) {
+            cardmodal.style.display = "none";
+        }
+    };
+</script>

@@ -79,6 +79,7 @@ header nav .main-nav {
 .admin-table {
     border-collapse: collapse;
     margin-top: 20px;
+    width: 100%;
 }
 .admin-table thead {
     background-color: var(--pink);
@@ -89,13 +90,17 @@ header nav .main-nav {
     padding: 10px;
 }
 .admin-table td .product-img {
-    width: 10vw;
+    width: 12vw;
+    margin: auto;
 }
 .admin-table td .action,
 .content .heading-buttons .buttons-container {
     display: flex;
     gap: 15px;
     align-items: center;
+}
+.admin-table td .action{
+    justify-content: center;
 }
 .admin-table td .action .btn-icon:first-child {
     background-color: var(--pink);

@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <link rel="icon" type="image/png" href="{{ asset('assets/img/Logo/Logo Achie Bakery.png')}}">
+
         <title>{{ config('app.name', 'Achie Bakery') }}</title>
 
         <script src="https://kit.fontawesome.com/1a293db120.js" crossorigin="anonymous"></script>
