@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
 Route::post('/category-store', [CategoryController::class, 'store'])->name('category.store');
+Route::get('/category-edit/{category}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::put('/category-edit/{category}', [CategoryController::class, 'update'])->name('category.edit');
 
 Route::get('/category/{category}', function (Category $category) {
     $products = Product::all();

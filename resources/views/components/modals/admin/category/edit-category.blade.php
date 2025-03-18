@@ -1,12 +1,15 @@
-<div id="addCategoryModal" class="modal">
+<div id="editCategoryModal-{{ $category->id_category }}" class="modal">
     <div class="modal-content">
         <div class="modal-title-close">
-            <h2>Edit Kategori Produk</h2>
-            <span class="close" id="close-card-modal">&times;</span>
+            <h2>Edit Kategori <span>{{ $category->category_name }}</span></h2>
+            <span class="close" onclick="closeEditCategory('{{ $category->id_category }}')">&times;</span>
         </div>
 
-        <form action="{{ route('category.store') }}" method="POST">
+        <form action="{{ route('category.edit', ['category' => $category->id_category]) }}" method="POST">
             @csrf
+            @method('PUT')
+
+            <input type="hidden" id="editCategoryId-{{ $category->id_category }}" name="id_category">
 
             <label for="category_name">Nama Kategori :</label>
 
@@ -16,17 +19,19 @@
                     id="category_name"
                     name="category_name"
                     autocomplete="off"
+                    value="{{ $category->category_name }}"
+                    required
                 />
             </div>
 
             <label for="category_description">Deskripsi Kategori :</label>
 
             <div class="input-container">
-                <textarea name="category_description" id="category_description" rows="4"></textarea>
+                <textarea name="category_description" id="category_description" rows="4" required>{{ $category->category_description }}</textarea>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn" id="cancel-card-modal">
+                <button type="button" class="btn" onclick="closeEditCategory('{{ $category->id_category }}')">
                     Cancel
                 </button>
                 
@@ -37,28 +42,3 @@
         </form>
     </div>
 </div>
-
-<script>
-    var cardmodal = document.getElementById("addCategoryModal");
-    var opencard = document.getElementById("add-card");
-    var cardexit = document.getElementById("close-card-modal");
-    var cardcancel = document.getElementById("cancel-card-modal");
-
-    opencard.onclick = function () {
-      cardmodal.style.display = "block";
-    };
-
-    cardexit.onclick = function () {
-      cardmodal.style.display = "none";
-    };
-
-    cardcancel.onclick = function () {
-      cardmodal.style.display = "none";
-    };
-
-    window.onclick = function (event) {
-      if (event.target == cardmodal) {
-        cardmodal.style.display = "none";
-      }
-    };
-</script>

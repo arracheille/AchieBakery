@@ -2,9 +2,9 @@
 
 <main class="content">
     <div class="heading-buttons">
-        <h3>Kategori Brownies</h3>
+        <h3>Kategori Produk</h3>
         <div class="buttons-container">
-            <button class="btn" id="add-card">Tambahkan Data</button>
+            <button class="btn" onclick="openAddCategory()">Tambahkan Data</button>
             <div class="input-container">
                 <input
                     type="text"
@@ -29,9 +29,9 @@
                 <td>{{ $category->category_description }}</td>
                 <td>
                     <span class="action">
-                        <a href="#" class="btn-icon" >
+                        <button onclick="openEditCategory('{{ $category->id_category }}')" class="btn-icon" >
                             <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
+                        </button>
                         <a href="#" class="btn-icon" >
                             <i class="fa-solid fa-trash-can"></i>
                         </a>
@@ -44,4 +44,27 @@
     </table>
 </main>
 
+@foreach ($categories as $category)
+    @include('components.modals.admin.category.edit-category')
+@endforeach
+
 @include('components.modals.admin.category.add-category')
+
+<script>
+    function openAddCategory() {
+        document.getElementById('addCategoryModal').style.display = 'block';
+    }
+
+    function closeAddCategory() {
+        document.getElementById('addCategoryModal').style.display = 'none';
+    }
+
+    function openEditCategory(id) {
+        document.getElementById('editCategoryModal-' + id).style.display = 'block';
+        document.getElementById('editCategoryId-' + id).value = id;
+    }
+
+    function closeEditCategory(id) {
+        document.getElementById('editCategoryModal-' + id).style.display = 'none';
+    }
+</script>

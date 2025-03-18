@@ -25,7 +25,7 @@
             <th>Ukuran Produk</th>
             <th>Aksi</th>
         </thead>
-        @forelse ($products as $product)
+        @forelse ($category->products as $product)
             <tr>
                 <td>{{ $product['id_product'] }}</td>
                 <td>

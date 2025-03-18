@@ -18,6 +18,7 @@
                     id="product_img"
                     name="product_img"
                     autocomplete="off"
+                    required
                 />
             </div>
 
@@ -29,6 +30,7 @@
                     id="product_name"
                     name="product_name"
                     autocomplete="off"
+                    required
                 />
             </div>
 
@@ -40,13 +42,14 @@
                     id="product_price"
                     name="product_price"
                     autocomplete="off"
+                    required
                 />
             </div>
 
             <label for="product_description">Deskripsi Produk :</label>
 
             <div class="input-container">
-                <textarea name="product_description" id="product_description" rows="4"></textarea>
+                <textarea name="product_description" id="product_description" rows="4" required></textarea>
             </div>
 
             <label for="product_size">Ukuran Produk :</label>
@@ -57,11 +60,12 @@
                     id="product_size"
                     name="product_size"
                     autocomplete="off"
+                    required
                 />
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn" id="cancel-card-modal">
+                <button type="button" class="btn" onclick="closeAddProduct()">>
                     Cancel
                 </button>
                 

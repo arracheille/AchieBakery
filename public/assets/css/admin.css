@@ -99,7 +99,7 @@ header nav .main-nav {
     gap: 15px;
     align-items: center;
 }
-.admin-table td .action{
+.admin-table td .action {
     justify-content: center;
 }
 .admin-table td .action .btn-icon:first-child {

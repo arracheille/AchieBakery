@@ -64,7 +64,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.index', ['category' => $category]);
     }
 
     /**
@@ -72,7 +72,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $categories = $request->validate([
+            'category_name' => 'required|string|max:255',
+            'category_description' => 'required|string',
+        ]);
+
+        $categories['category_name'] = strip_tags($categories['category_name']);        
+        $categories['category_description'] = strip_tags($categories['category_description']);
+        $category->update($categories);
+        return redirect(route('category.index'));
     }
 
     /**

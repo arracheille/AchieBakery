@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-title-close">
             <h2>Tambahkan Kategori Produk</h2>
-            <span class="close" id="close-card-modal">&times;</span>
+            <span class="close" onclick="closeAddCategory()">&times;</span>
         </div>
 
         <form action="{{ route('category.store') }}" method="POST">
@@ -16,17 +16,18 @@
                     id="category_name"
                     name="category_name"
                     autocomplete="off"
+                    required
                 />
             </div>
 
             <label for="category_description">Deskripsi Kategori :</label>
 
             <div class="input-container">
-                <textarea name="category_description" id="category_description" rows="4"></textarea>
+                <textarea name="category_description" id="category_description" rows="4" required></textarea>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn" id="cancel-card-modal">
+                <button type="button" class="btn" onclick="closeAddCategory()">
                     Cancel
                 </button>
                 
@@ -37,28 +38,3 @@
         </form>
     </div>
 </div>
-
-<script>
-    var cardmodal = document.getElementById("addCategoryModal");
-    var opencard = document.getElementById("add-card");
-    var cardexit = document.getElementById("close-card-modal");
-    var cardcancel = document.getElementById("cancel-card-modal");
-
-    opencard.onclick = function () {
-      cardmodal.style.display = "block";
-    };
-
-    cardexit.onclick = function () {
-      cardmodal.style.display = "none";
-    };
-
-    cardcancel.onclick = function () {
-      cardmodal.style.display = "none";
-    };
-
-    window.onclick = function (event) {
-      if (event.target == cardmodal) {
-        cardmodal.style.display = "none";
-      }
-    };
-</script>
