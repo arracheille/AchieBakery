@@ -28,7 +28,7 @@
             <h5>Tentang Kami</h5>
             <p>
               Minimal pre order adalah h-3. Kami menerima pesanan setiap hari
-              kecuali h-3 lebaran.
+              kecuali h-2 lebaran.
             </p>
           </div>
           <div class="about-container">

@@ -12,12 +12,20 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $primaryKey = 'id_user';
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
     protected $fillable = [
+        'id_user',
         'name',
         'email',
         'password',
@@ -44,5 +52,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function address() {
+        return $this->hasMany(Address::class, 'user_id');
+    }
+    
+    public function order() {
+        return $this->hasMany(Order::class, 'user_id');
     }
 }

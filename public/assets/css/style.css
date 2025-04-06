@@ -213,3 +213,15 @@ section.hero .section-container {
   height: 35px;
   border-radius: 50%;
 }
+.item-quantity input{
+  max-width: 50px;
+  text-align: center;
+}
+.item-quantity input::-webkit-outer-spin-button,
+.item-quantity input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.item-quantity input[type=number] {
+  -moz-appearance: textfield;
+}

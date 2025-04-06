@@ -25,30 +25,34 @@
             }
         </style>
     </head>
-    <section class="brownies">
-        <div class="section-container brownies">
-            <div class="heading-text">
-                <h2 data-aos="fade-down" data-aos-duration="500">Brownies</h2>
-                <a href="#" class="underline">Tampilkan Lebih Banyak</a>
-            </div>
-            <div
-                class="product-container"
-                data-aos="fade-zoom-in"
-                data-aos-easing="ease-in-back"
-                data-aos-duration="700">
+    @foreach ($categories as $category)
+        <section class="{{ $category->category_name }}">
+            <div class="section-container {{ $category->category_name }}">
+                <div class="heading-text">
+                    <h2 data-aos="fade-down" data-aos-duration="500">{{ $category->category_name }}</h2>
+                    <a href="#" class="underline">Tampilkan Lebih Banyak</a>
+                </div>
+                <div
+                    class="product-container"
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-back"
+                    data-aos-duration="700">
 
-                <div class="product-content">
+                    @foreach ($category->products as $product)
+                        <div class="product-content">
 
-                    <div class="product-img">
-                        <img src="assets/img/Katalog/brownies sekat.jpg" alt="" />
-                    </div>
+                            <div class="product-img">
+                                <img src="{{ asset($product->product_img) }}" alt="{{ $product->product_img }}" />
+                            </div>
 
-                    <div class="product-info">
-                        <h4>Brownies Sekat 25 Pcs</h4>
-                        <p>Rp. 30.000</p>
-                    </div>
+                            <div class="product-info">
+                                <h4>{{ $product->product_name }}</h4>
+                                <p>{{ $product->product_price }}</p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section>  
+        </section>
+    @endforeach
 </x-app-layout>

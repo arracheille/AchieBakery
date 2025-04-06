@@ -35,9 +35,9 @@
         </li>
         
         <li>
-            <a href="#"
+            <a href="{{ route('calendar.index') }}"
             ><i class="fa-solid fa-calendar-days"></i>
-            <span class="text a-poppins">Tanggal</span></a
+            <span class="text a-poppins">Kalender</span></a
             >
         </li>
         

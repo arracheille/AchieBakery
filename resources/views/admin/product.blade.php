@@ -1,4 +1,4 @@
-@include('layouts.admin.admin')
+@include('layouts.admin.index')
 
 <main class="content">
     <div class="heading-buttons">

@@ -35,7 +35,16 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $lastUser = User::orderBy('id_user', 'desc')->first();
+        $lastId = $lastUser ? intval(substr($lastUser->id_user, 4)) : 0;
+        $uniqueId = 'U-' . str_pad($lastId + 1, 4, '0', STR_PAD_LEFT);
+    
+        if (User::where('id_user', $uniqueId)->exists()) {
+            return redirect()->route('welcome')->with('error', 'ID user already exists.');
+        }
+
         $user = User::create([
+            'id_user' => $uniqueId,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
