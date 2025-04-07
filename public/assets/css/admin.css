@@ -20,6 +20,7 @@ header nav .main-nav {
     left: 0;
     padding: 30px 2vw;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 .sidebar .sidebar-logo {
     display: flex;
