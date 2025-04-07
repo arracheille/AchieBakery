@@ -24,18 +24,19 @@ class CategoryController extends Controller
             return redirect()->route('categories.index')->with('error', 'ID category already exists.');
         }
     
-        $category = Category::create([
-            'id_category' => $newId,
-            'category_name' => $request->category_name,
-            'category_description' => $request->category_description,
-        ]);
+        $category = new Category();
+        $category->id_category = $newId;
+        $category->category_name = $request->category_name;
+        $category->category_description = $request->category_description;
 
         if ($request->hasFile('category_img')) {
             $imageName = time() . '.' . $request->category_img->extension();
             $request->category_img->move(public_path('category_img'), $imageName);
             $category->category_img = 'category_img/' . $imageName;
         }
-    
+
+        $category->save();
+
         return redirect()->route('category.index')->with('success', 'Category successfully added!');
     }
 

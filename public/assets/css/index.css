@@ -250,6 +250,12 @@ header nav .nav-container {
 header nav ul {
     gap: 15px;
 }
+header nav ul li{
+    padding-block: 5px;
+}
+header nav ul li.active{
+    border-bottom: 2px solid var(--dark-brown);
+}
 header nav .nav-links .nav-link a {
     font-family: var(--poppins);
     font-weight: 500;

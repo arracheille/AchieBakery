@@ -5,15 +5,23 @@
         <div class="nav-container">
           <a href="{{ route('welcome') }}" class="nav-logo">
             <img
-              src="assets/img/Logo/Logo Achie Bakery.png"
+              src="{{ asset('assets/img/Logo/Logo Achie Bakery.png') }}"
               alt="Navbar Logo"
             />
           </a>
           <ul class="nav-links">
-            <li class="nav-link {{ Request::is('/') ? 'active' : '' }}"><a href="{{ route('welcome') }}">Beranda</a></li>
-            <li class="nav-link {{ Request::is('/category') ? 'active' : '' }}"><a href="{{ route('user.category.index') }}">Kategori</a></li>
-            <li class="nav-link {{ Request::is('/choose-your-moments') ? 'active' : '' }}"><a href="#">Pilih Momenmu</a></li>
-            <li class="nav-link {{ Request::is('/about') ? 'active' : '' }}"><a href="#">Tentang Achie Bakery</a></li>
+            <li class="nav-link {{ Request::is('/*') ? 'active' : '' }}">
+              <a href="{{ route('welcome') }}">Beranda</a>
+            </li>
+            <li class="nav-link {{ Request::is('category*') ? 'active' : '' }}">
+              <a href="{{ route('user.category.index') }}">Kategori</a>
+            </li>
+            <li class="nav-link {{ Request::is('choose-your-moments*') ? 'active' : '' }}">
+              <a href="{{ route('cym.index') }}">Pilih Momenmu</a>
+            </li>
+            <li class="nav-link {{ Request::is('about*') ? 'active' : '' }}">
+              <a href="{{ route('about.index') }}">Tentang Achie Bakery</a>
+            </li>
           </ul>
         </div>
         <ul class="nav-buttons">

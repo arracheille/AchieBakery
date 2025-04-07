@@ -35,7 +35,7 @@
                 <td>{{ $category->category_description }}</td>
                 <td>
                     <span class="action">
-                        <button onclick="openEditCategory('editCategoryId-{{ $category->id_category }}')" class="btn-icon" >
+                        <button onclick="openEditCategory('{{ $category->id_category }}')" class="btn-icon" >
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <a href="#" class="btn-icon" >
@@ -44,15 +44,12 @@
                     </span>
                 </td>
             </tr>
+            @include('components.modals.admin.category.edit-category')
         @empty
             <p>Belum ada data kategori!</p>
         @endforelse
     </table>
 </main>
-
-@foreach ($categories as $category)
-    @include('components.modals.admin.category.edit-category')
-@endforeach
 
 @include('components.modals.admin.category.add-category')
 
@@ -68,6 +65,9 @@
     function openEditCategory(id) {
         document.getElementById('editCategoryModal-' + id).style.display = 'block';
         document.getElementById('editCategoryId-' + id).value = id;
+
+        console.log(id);
+        
     }
 
     function closeEditCategory(id) {

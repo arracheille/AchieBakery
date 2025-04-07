@@ -24,11 +24,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', function ($view) {
-            // $workspaces     = Workspace::where('user_id', auth()->user()->id)->where('id', Request::segment(2))->get();
-            $categories = Category::all(); // Mengambil semua kategori
+            $categories = Category::all();
             $view->with('categories', $categories);
             $products = Product::all();
             $view->with('products', $products);
+
+            $categoryId = request()->segment(3);
         });
     }
 }

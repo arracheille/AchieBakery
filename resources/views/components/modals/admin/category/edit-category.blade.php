@@ -11,6 +11,21 @@
 
             <input type="hidden" id="editCategoryId-{{ $category->id_category }}" name="id_category">
 
+            <label for="category_img">Gambar Kategori :</label>
+
+            <img src="{{ asset($category->category_img) }}" alt="edit-category-{{ $category->category_img }}">
+
+            <p>Ubah Gambar</p>
+            <div class="input-container">
+                <input
+                    type="file"
+                    id="category_img"
+                    name="category_img"
+                    autocomplete="off"
+                    required
+                />
+            </div>
+
             <label for="category_name">Nama Kategori :</label>
 
             <div class="input-container">

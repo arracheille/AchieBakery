@@ -1,6 +1,6 @@
 <aside class="sidebar">
     <div class="sidebar-logo">
-        <img src="../assets/img/Logo/Logo Achie Bakery.png" alt="Navbar Logo" />
+        <img src="{{ asset('assets/img/Logo/Logo Achie Bakery.png') }}" alt="Navbar Logo" />
         <h4>Achie Bakery</h4>
     </div>
     <hr />
@@ -20,7 +20,7 @@
 
             @foreach ($categories as $category)
 
-                <a href="{{ route('product.index', ['category' => $category->id_category]) }}" class="child-link">
+                <a href="{{ route('product.index', ['category' => $category->id_category]) }}" class="child-link {{ Request::is('category/*') ? 'active' : '' }}">
                     <span class="text a-poppins">Kategori {{ $category->category_name }}</span>
                 </a>
 

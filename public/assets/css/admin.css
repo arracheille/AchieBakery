@@ -63,6 +63,9 @@ header nav .main-nav {
     margin-top: 15px;
     padding: 10px;
 }
+.sidebar ul li a.child-link.active {
+    background: var(--dark-pink);
+}
 .content {
     margin-left: 18vw;
     padding: 2vw;

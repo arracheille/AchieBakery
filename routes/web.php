@@ -25,10 +25,36 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/cart', function () {
+    return view('cart');
+})->name('cart.index');
+
+Route::get('/checkout', function () {
+    return view('checkout');
+})->name('checkout.index');
+
+Route::get('/choose-your-moment', function () {
+    return view('choose-your-moment');
+})->name('cym.index');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about.index');
+
 Route::get('/category', function () {
     $categories = Category::all();
     return view('category', compact('categories'));
 })->name('user.category.index');
+
+Route::get('/category/{category}', function (Category $category) {
+    $products = Product::all();
+    return view('category-item', compact('category', 'products'));
+})->name('category-item.index');
+
+Route::get('/product/{product}', function (Product $product) {
+    // $products = Product::all();w
+    return view('product-preview', compact('product'));
+})->name('product-preview.index');
 
 Route::get('/admin/category', function () {
     $categories = Category::all();

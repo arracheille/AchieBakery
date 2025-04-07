@@ -23,6 +23,9 @@
             section:nth-of-type(3n) p {
                 color: var(--cream);
             }
+            .product-img{
+                max-width: 16vw;
+            }
         </style>
     </head>
     @foreach ($categories as $category)
@@ -30,7 +33,7 @@
             <div class="section-container {{ $category->category_name }}">
                 <div class="heading-text">
                     <h2 data-aos="fade-down" data-aos-duration="500">{{ $category->category_name }}</h2>
-                    <a href="#" class="underline">Tampilkan Lebih Banyak</a>
+                    <a href="{{ route('category-item.index', ['category' => $category->id_category]) }}" class="underline">Tampilkan Lebih Banyak</a>
                 </div>
                 <div
                     class="product-container"
@@ -38,7 +41,7 @@
                     data-aos-easing="ease-in-back"
                     data-aos-duration="700">
 
-                    @foreach ($category->products as $product)
+                    @foreach ($category->products->take(4) as $product)
                         <div class="product-content">
 
                             <div class="product-img">

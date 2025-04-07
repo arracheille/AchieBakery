@@ -5,8 +5,20 @@
             <span class="close" onclick="closeAddCategory()">&times;</span>
         </div>
 
-        <form action="{{ route('category.store') }}" method="POST">
+        <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
+            <label for="category_img">Gambar Kategori :</label>
+
+            <div class="input-container">
+                <input
+                    type="file"
+                    id="category_img"
+                    name="category_img"
+                    autocomplete="off"
+                    required
+                />
+            </div>
 
             <label for="category_name">Nama Kategori :</label>
 
