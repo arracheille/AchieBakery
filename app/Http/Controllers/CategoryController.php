@@ -11,6 +11,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'category_img' => 'required|image|mimes:jpeg,png,jpg',
             'category_name' => 'required|string|max:255',
             'category_description' => 'required|string',
         ]);
@@ -28,6 +29,12 @@ class CategoryController extends Controller
             'category_name' => $request->category_name,
             'category_description' => $request->category_description,
         ]);
+
+        if ($request->hasFile('category_img')) {
+            $imageName = time() . '.' . $request->category_img->extension();
+            $request->category_img->move(public_path('category_img'), $imageName);
+            $category->category_img = 'category_img/' . $imageName;
+        }
     
         return redirect()->route('category.index')->with('success', 'Category successfully added!');
     }

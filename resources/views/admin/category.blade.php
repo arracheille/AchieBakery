@@ -17,14 +17,20 @@
     </div>
     <table class="admin-table">
         <thead>
-            <th>ID Pesanan</th>
-            <th>ID Pengguna</th>
+            <th>ID Kategori</th>
+            <th>Gambar Kategori</th>
+            <th>Nama Kategori</th>
             <th>Deskripsi Kategori</th>
             <th>Aksi</th>
         </thead>
         @forelse ($categories as $category)
             <tr>
                 <td>{{ $category->id_category }}</td>
+                <td>
+                    <div class="product-img">
+                        <img src="{{ asset($category->category_img) }}" alt="{{ $category->category_img }}" />
+                    </div>
+                </td>
                 <td>{{ $category->category_name }}</td>
                 <td>{{ $category->category_description }}</td>
                 <td>

@@ -35,7 +35,7 @@ class ProductController extends Controller
             'product_description' => 'required|string',
             'product_price' => 'required|integer',
             'product_size' => 'required|string',
-            'product_img' => 'nullable|image|mimes:jpeg,png,jpg',
+            'product_img' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
         $lastProduct = Product::orderBy('id_product', 'desc')->first();

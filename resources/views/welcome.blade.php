@@ -205,70 +205,18 @@
             data-aos-easing="ease-in-back"
             data-aos-duration="700"
           >
+          @foreach ($products->shuffle()->take(8) as $product)
             <div class="product-content">
               <div class="product-img">
-                <img src="assets/img/Katalog/brownies sekat.jpg" alt="" />
+                <img src="{{ $product->product_img }}" alt="" />
               </div>
               <div class="product-info">
-                <h4>Brownies Sekat 25 Pcs</h4>
-                <p>Rp. 30.000</p>
+                <h4>{{ $product->product_name }}</h4>
+                <p>Rp. {{ $product->product_price }}</p>
               </div>
             </div>
-            <div class="product-content">
-              <div class="product-img">
-                <img src="assets/img/Katalog/brownies sekat.jpg" alt="" />
-              </div>
-              <div class="product-info">
-                <h4>Brownies Sekat 25 Pcs</h4>
-                <p>Rp. 30.000</p>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="product-img">
-                <img src="assets/img/Katalog/brownies sekat.jpg" alt="" />
-              </div>
-              <div class="product-info">
-                <h4>Brownies Sekat 25 Pcs</h4>
-                <p>Rp. 30.000</p>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="product-img">
-                <img src="assets/img/Katalog/brownies sekat.jpg" alt="" />
-              </div>
-              <div class="product-info">
-                <h4>Brownies Sekat 25 Pcs</h4>
-                <p>Rp. 30.000</p>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="product-img">
-                <img src="assets/img/Katalog/brownies sekat.jpg" alt="" />
-              </div>
-              <div class="product-info">
-                <h4>Brownies Sekat 25 Pcs</h4>
-                <p>Rp. 30.000</p>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="product-img">
-                <img src="assets/img/Katalog/brownies sekat.jpg" alt="" />
-              </div>
-              <div class="product-info">
-                <h4>Brownies Sekat 25 Pcs</h4>
-                <p>Rp. 30.000</p>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="product-img">
-                <img src="assets/img/Katalog/brownies sekat.jpg" alt="" />
-              </div>
-              <div class="product-info">
-                <h4>Brownies Sekat 25 Pcs</h4>
-                <p>Rp. 30.000</p>
-              </div>
-            </div>
-          </div>
+          @endforeach
+        </div>
           <a href="#" class="underline">Tampilkan Lebih Banyak</a>
         </div>
       </section>
@@ -295,48 +243,14 @@
               <button class="carousel-btn next">❯</button>
             </div>
             <div class="carousel">
-              <div class="carousel-item">
-                <div class="category-image">
-                  <img src="assets/img/Katalog/cake ungu 17.jpg" alt="" />
+              @foreach ($categories as $category)
+                <div class="carousel-item">
+                  <div class="category-image">
+                    <img src="{{ asset($category->category_img) }}" alt="{{ $category->category_img }}" />
+                  </div>
+                  <h4>{{ $category->category_name }}</h4>
                 </div>
-                <h4>Brownies</h4>
-              </div>
-              <div class="carousel-item">
-                <div class="category-image">
-                  <img src="assets/img/Katalog/cake ungu 17.jpg" alt="" />
-                </div>
-                <h4>Cake</h4>
-              </div>
-              <div class="carousel-item">
-                <div class="category-image">
-                  <img src="assets/img/Katalog/cake ungu 17.jpg" alt="" />
-                </div>
-                <h4>Roti Manis</h4>
-              </div>
-              <div class="carousel-item">
-                <div class="category-image">
-                  <img src="assets/img/Katalog/cake ungu 17.jpg" alt="" />
-                </div>
-                <h4>Snack Tradisional</h4>
-              </div>
-              <div class="carousel-item">
-                <div class="category-image">
-                  <img src="assets/img/Katalog/cake ungu 17.jpg" alt="" />
-                </div>
-                <h4>Paket Rice Box</h4>
-              </div>
-              <div class="carousel-item">
-                <div class="category-image">
-                  <img src="assets/img/Katalog/cake ungu 17.jpg" alt="" />
-                </div>
-                <h4>Paket Snack Box</h4>
-              </div>
-              <div class="carousel-item">
-                <div class="category-image">
-                  <img src="assets/img/Katalog/cake ungu 17.jpg" alt="" />
-                </div>
-                <h4>Paket Snack Box</h4>
-              </div>
+              @endforeach
             </div>
           </div>
         </div>
