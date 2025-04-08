@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('addresses', function (Blueprint $table) {
-            $table->string('id_address', 10)->primary();
-            $table->string('user_id', 10);
-            $table->string('location_name');
-            $table->text('location_address');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 10, 8);
+        Schema::create('carts', function (Blueprint $table) {
+            $table->string('id_cart', 10)->primary();
+            $table->string('user_id');
+            $table->string('product_id');
+            $table->integer('quantity');
+            $table->boolean('is_checked')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id_user')->on('users')->onDelete('cascade');
+            $table->foreign('product_id')->references('id_product')->on('products')->onDelete('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('addresses');
+        Schema::dropIfExists('carts');
     }
 };

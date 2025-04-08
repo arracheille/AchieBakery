@@ -16,7 +16,7 @@
         </div>
         <div class="footer-content logo-links">
           <span class="footer-logo">
-            <img src="assets/img/Logo/Logo Achie Bakery.png" alt="" />
+            <img src="{{ asset('assets/img/Logo/Logo Achie Bakery.png') }}" alt="" />
           </span>
           <a href="{{ route('welcome') }}" class="underline">Beranda</a>
           <a href="#" class="underline">Menu</a>

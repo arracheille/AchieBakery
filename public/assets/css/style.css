@@ -225,7 +225,10 @@ section.hero .section-container {
 .item-quantity input[type="number"] {
     -moz-appearance: textfield;
 }
-
+.item-quantity .input-container {
+    border: none;
+    padding: 0;
+}
 /* product-preview */
 .product-preview span,
 .product-preview span a {
@@ -321,6 +324,8 @@ section.hero .section-container {
 }
 .actions .btn {
     padding: 11px;
+}
+.actions form .btn.cart {
     background-color: var(--pink);
     color: var(--dark-brown);
 }
@@ -375,8 +380,15 @@ section.recommends {
 .cart-product-content .product-img {
     max-width: 10vw;
 }
-.cart-product-content .button-delete {
+.cart-product-container .cart-product-content .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.cart-product-content .delete-cart-item {
     margin-left: auto;
+}
+.cart-product-content .delete-cart-item .button-delete {
     background-color: var(--dark-pink);
     color: var(--cream);
 }
@@ -401,4 +413,55 @@ section.recommends {
 }
 .cart-total-content hr {
     border: 1px solid var(--dark-brown);
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--dark-brown);
+    padding: 30px;
+    width: 50vw;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    max-height: 80vh;
+}
+.modal-title-close,
+.dropdown-title-close {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-title-close .close,
+.modal-title-close h2,
+.modal-content form label {
+    color: var(--cream);
+}
+.modal-title-close .close {
+    float: right;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 40px;
+}
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.modal-content form .modal-footer {
+    margin-top: 20px;
 }

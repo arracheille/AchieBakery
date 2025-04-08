@@ -32,12 +32,13 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'phone_number' => ['required', 'string', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $lastUser = User::orderBy('id_user', 'desc')->first();
         $lastId = $lastUser ? intval(substr($lastUser->id_user, 4)) : 0;
-        $uniqueId = 'U-' . str_pad($lastId + 1, 4, '0', STR_PAD_LEFT);
+        $uniqueId = 'USR-' . str_pad($lastId + 1, 4, '0', STR_PAD_LEFT);
     
         if (User::where('id_user', $uniqueId)->exists()) {
             return redirect()->route('welcome')->with('error', 'ID user already exists.');
@@ -47,6 +48,7 @@ class RegisteredUserController extends Controller
             'id_user' => $uniqueId,
             'name' => $request->name,
             'email' => $request->email,
+            'phone_number' => $request->phone_number,
             'password' => Hash::make($request->password),
         ]);
 

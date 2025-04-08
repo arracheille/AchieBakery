@@ -107,7 +107,7 @@ class ProductSeeder extends Seeder
             'id_product' => 'PRD-0010',
             'category_id' => 'CAT-0001',
             'product_name' => 'Brownies Sekat 25 Pcs + Coklat Ucapan',
-            'product_img' => 'catalog_images/Brownies/IMG20211113103345.jpg',
+            'product_img' => 'catalog_images/Brownies/IMG20220924120222.jpg',
             'product_description' => 'Brownies khas Achie Bakery dengan dengan ucapan coklat untuk acaramu',
             'product_price' => 170000,
             'product_size' => '20cm x 20cm',

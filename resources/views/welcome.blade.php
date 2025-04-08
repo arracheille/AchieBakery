@@ -366,7 +366,5 @@
         </div>
     </section>
 
-    @include('layouts.footer')
-
     <script src="assets/js/carousel.js"></script>
 </x-app-layout>

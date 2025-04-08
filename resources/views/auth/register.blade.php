@@ -28,6 +28,12 @@
                         <x-input-error :messages="$errors->get('email')" />
 
                         <div class="input-container">
+                            <x-text-input id="phone_number" type="phone_number" name="phone_number" :value="old('phone_number')" required autocomplete="phone_number" placeholder="Nomor HP (08)" />
+                        </div>
+
+                        <x-input-error :messages="$errors->get('phone_number')" />
+
+                        <div class="input-container">
                             <x-text-input id="password" type="password" name="password" required autocomplete="new-password" placeholder="Password" />
                 
                             <i class="fa fa-eye" id="togglePassword"></i>

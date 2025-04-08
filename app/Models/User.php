@@ -28,6 +28,7 @@ class User extends Authenticatable
         'id_user',
         'name',
         'email',
+        'phone_number',
         'password',
     ];
 
@@ -60,5 +61,9 @@ class User extends Authenticatable
     
     public function order() {
         return $this->hasMany(Order::class, 'user_id');
+    }
+    
+    public function cart() {
+        return $this->hasMany(Cart::class, 'user_id');
     }
 }

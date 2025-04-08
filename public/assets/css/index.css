@@ -91,6 +91,7 @@ img {
     font-size: var(--f-p-14);
     font-weight: 600;
     display: inline-block;
+    text-align: center;
 }
 .btn-icon {
     display: flex;
@@ -267,6 +268,9 @@ header nav .nav-logo {
 }
 header nav .nav-logo img {
     width: 35px;
+}
+header nav a.btn.logout{
+    cursor: pointer;
 }
 .underline {
     text-decoration: underline;

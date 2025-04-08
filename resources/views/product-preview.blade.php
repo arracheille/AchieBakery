@@ -59,17 +59,26 @@
                 </label>
               </div> --}}
               <div class="actions">
-                <div class="quantity-chat">
-                  <div class="item-quantity">
-                    <button><i class="fa-solid fa-plus"></i></button>
-                    <p>1</p>
-                    <button><i class="fa-solid fa-minus"></i></button>
+                <form action="{{ route('cart.store') }}" method="POST">
+                  @csrf
+
+                  <input type="hidden" name="product_id" value="{{ $product->id_product }}">
+
+                  <div class="quantity-chat">
+                    <div class="item-quantity">
+                      <button type="button" class="increase-btn" id="increase-btn" ><i class="fa-solid fa-plus"></i></button>
+                      <div class="input-container">
+                          <input type="number" name="quantity" id="quantity" value="1" min="1">
+                      </div>
+                      <button type="button" class="decrease-btn" id="decrease-btn" ><i class="fa-solid fa-minus"></i></button>
+                    </div>
+                    <a href="#" class="btn-icon"
+                      ><i class="fa-solid fa-comment-dots"></i>
+                    </a>
                   </div>
-                  <a href="#" class="btn-icon"
-                    ><i class="fa-solid fa-comment-dots"></i
-                  ></a>
-                </div>
-                <button class="btn">Masukkan ke Keranjang</button>
+
+                  <button class="btn cart">Masukkan ke Keranjang</button>
+                </form>
                 <button class="btn">Pesan Sekarang</button>
               </div>
             </div>
@@ -106,5 +115,7 @@
             @endforeach
           </div>
         </div>
-    </section>  
+    </section>
+
+    <script src="{{ asset('assets/js/quantity.js') }}"></script>
 </x-guest-layout>

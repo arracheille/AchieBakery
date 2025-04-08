@@ -1,13 +1,16 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Calendar;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,12 +29,34 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/cart', function () {
-    return view('cart');
+    $carts = Cart::all();
+    return view('cart', compact('carts'));
 })->name('cart.index');
 
-Route::get('/checkout', function () {
-    return view('checkout');
-})->name('checkout.index');
+Route::get('/cart-count', function () {
+    $userId = Auth::user()->id_user;
+
+    $checkedCarts = \App\Models\Cart::with('product')
+        ->where('user_id', $userId)
+        ->where('is_checked', 1)
+        ->get();
+
+    $checked = $checkedCarts->count();
+    $total = \App\Models\Cart::where('user_id', $userId)->count();
+
+    // Hitung total harga
+    $totalPrice = $checkedCarts->sum(function ($cart) {
+        return $cart->product->product_price * $cart->quantity;
+    });
+
+    return response()->json([
+        'checked' => $checked,
+        'total' => $total,
+        'total_price' => $totalPrice
+    ]);
+})->name('cart.count.checked');
+
+Route::get('/checkout', [OrderController::class, 'index'])->name('checkout');
 
 Route::get('/choose-your-moment', function () {
     return view('choose-your-moment');
@@ -73,6 +98,14 @@ Route::get('/admin/calendar', function () {
 })->name('calendar.index');
 
 Route::post('/product-store', [ProductController::class, 'store'])->name('product.store');
+
+Route::post('/cart-store', [CartController::class, 'store'])->name('cart.store');
+Route::delete('/cart-delete/{cart}', [CartController::class, 'destroy'])->name('cart.delete');
+
+Route::get('/cart-checklist/{checklist}', [CartController::class, 'edit'])->name('cart.edit');
+Route::put('/cart-checklist', [CartController::class, 'checklist'])->name('cart.checklist');
+Route::put('/cart-update-quantity', [CartController::class, 'quantity_update'])->name('cart.update.quantity');
+Route::put('/cart-check-all', [CartController::class, 'check_all'])->name('cart.check.all');
 
 Route::post('/category-store', [CategoryController::class, 'store'])->name('category.store');
 Route::get('/category-edit/{category}', [CategoryController::class, 'edit'])->name('category.edit');

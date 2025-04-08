@@ -68,7 +68,7 @@
                                         <input type="number" name="product_quantity" id="product_quantity" value="0">
                                     </div>
                                     <button><i class="fa-solid fa-minus"></i></button>
-                                </div>                                  
+                                </div>
                             </span>
                         </td>
                         <td>
