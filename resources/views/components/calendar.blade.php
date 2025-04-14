@@ -34,7 +34,7 @@
 
         document.getElementById('delivery_date').value = DeliveryDate.toISOString().slice(0, 16);
 
-        openAddcalendar();
+        // openAddcalendar();
         calendar.unselect();
       },
       eventClick: function (arg) {

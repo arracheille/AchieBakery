@@ -12,6 +12,7 @@ header nav .main-nav {
     border-bottom: solid 1px var(--dark-brown);
 }
 .sidebar {
+    z-index: 2;
     width: 18vw;
     height: 100vh;
     background: var(--dark-brown);
@@ -63,6 +64,7 @@ header nav .main-nav {
     margin-top: 15px;
     padding: 10px;
 }
+.sidebar ul li a.active,
 .sidebar ul li a.child-link.active {
     background: var(--dark-pink);
 }
@@ -82,12 +84,13 @@ header nav .main-nav {
     background-color: var(--pink);
 }
 .admin-table {
-    border-collapse: collapse;
-    width: 100%;
     background-color: var(--cream);
 }
 .admin-table thead {
     background-color: var(--pink);
+}
+.admin-table tr {
+    background-color: var(--cream);
 }
 .admin-table th,
 .admin-table td {
@@ -174,6 +177,17 @@ header nav .main-nav {
 .search-container .dropdown .admin-table .product-img,
 .admin-table#table-order .product-img {
     max-width: 7vw;
+}
+.dataTable {
+    padding-block: 20px;
+}
+table.dataTable.no-footer {
+    border-bottom: none !important;
+}
+.dataTables_info,
+.paginate_button {
+    font-family: var(--poppins);
+    color: var(--dark-brown) !important;
 }
 @media (max-width: 768px) {
     .sidebar {

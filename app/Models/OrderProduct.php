@@ -12,9 +12,13 @@ class OrderProduct extends Model
 
     protected $keyType = 'string';
 
-    protected $fillable = ['id_order_product', 'product_id', 'quantity'];
+    protected $fillable = ['id_order_product', 'product_id', 'order_id', 'quantity'];
 
-    public function products() {
+    public function order() {
+        return $this->belongsTo(Order::class, 'order_id');
+    }
+
+    public function product() {
         return $this->belongsTo(Product::class, 'product_id');
     }
 }

@@ -3,7 +3,7 @@
 <div class="content">
     <div class="heading-buttons">
         <h3>Pesanan Pengguna</h3>
-        <div class="buttons-container">
+        {{-- <div class="buttons-container">
             <button class="btn" onclick="openAddCategory()">Tambahkan Data</button>
             <div class="input-container">
                 <input
@@ -13,7 +13,7 @@
                     autocomplete="off"
                 />
             </div>
-        </div>
+        </div> --}}
     </div>
     <div id="calendar"></div>
 </div>

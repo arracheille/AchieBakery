@@ -29,11 +29,11 @@
             .cdc{
                 justify-content: space-between;
             }
-            span.cdc p{
-                color: var(--dark-pink);
+            .cdc p{
+                color: var(--dark-pink) !important;
                 font-size: 15px;
             }
-            span.cdc p:last-child{
+            .cdc p:last-child{
                 text-align: end;
                 font-weight: 700;
             }
@@ -96,7 +96,7 @@
 
                         <div class="input-container">
 
-                            <input type="text" name="catatan" id="catatan" placeholder="Ketikkan catatan seperti, toppingnya all chocochips ya!">
+                            <input type="text" name="note_product" id="note_product" placeholder="Ketikkan catatan seperti, toppingnya all chocochips ya!">
 
                         </div>
                     </div>
@@ -107,14 +107,14 @@
 
                     <div class="payment-method">
                         <div class="variants-container">
-                            <input type="radio" id="option1" name="options" value="1" checked/>
+                            <input type="radio" id="option1" name="options" value="COD" checked/>
                             <label for="option1" class="option-variants">COD</label>
             
-                            <input type="radio" id="option2" name="options" value="2" />
-                            <label for="option2" class="option-variants">Qris</label>
+                            {{-- <input type="radio" id="option2" name="options" value="Qris" />
+                            <label for="option2" class="option-variants">Qris</label> --}}
 
-                            <input type="radio" id="option3" name="options" value="3" />
-                            <label for="option3" class="option-variants">Gopay</label>
+                            {{-- <input type="radio" id="option3" name="options" value="3" />
+                            <label for="option3" class="option-variants">Gopay</label> --}}
                         </div>
                     </div>
 
@@ -142,10 +142,23 @@
                     <span class="cdc"><p>Harga Ongkir</p><p>Rp. 10.000</p></span>
                     <hr>
 
-                    <span class="cdc" style="margin-left: auto"><p>Metode Pembayaran: COD</p></span>
                     <span class="cdc"><h3>Total</h3><h2 class="a-poppins">Rp. {{ $total_price + 10000 }}</h2></span>
                 </div>
-                <button class="btn">Pesan</button>
+                <form action="{{ route('checkout.store') }}" method="POST">
+                    @csrf
+
+                    <input type="hidden" name="status" value="pending">
+                    <input type="hidden" name="total_price" value="{{ $total_price + 10000 }}">
+                    <input type="hidden" name="delivery_date" id="form-order-date">
+                    <input type="hidden" name="method" id="method" value="COD">
+                    <input type="hidden" name="note" id="note">
+
+                    <input type="hidden" name="latitude" id="latitude">
+                    <input type="hidden" name="longitude" id="longitude">
+                    <input type="hidden" name="location_address" id="form-order-location">
+
+                    <button class="btn">Pesan</button>
+                </form>
               </div>
             </div>
         </div>
@@ -156,12 +169,47 @@
     @include('components.jquery')
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
+        const paymentOptions = document.querySelectorAll('input[name="options"]');
+        const methodInput = document.getElementById('method');
+        const catatanInput = document.getElementById('note_product');
+        const catatanHiddenInput = document.getElementById('note');
+
+        function updatePaymentMethod() {
+            const selectedOption = document.querySelector('input[name="options"]:checked').value;
+            methodInput.value = selectedOption; 
+        }
+
+        paymentOptions.forEach(option => {
+            option.addEventListener('change', updatePaymentMethod);
+        });
+
+        function updateCatatan() {
+            catatanHiddenInput.value = catatanInput.value;
+        }
+
+        catatanInput.addEventListener('input', updateCatatan); 
+
+        updatePaymentMethod(); 
+        updateCatatan();
+        
         const date = new Date();
         date.setDate(date.getDate() + 4);
         document.getElementById('delivery_date').min = date.toISOString().split("T")[0];
 
         const deliveryDateInput = document.getElementById('delivery_date');
-        deliveryDateInput.value = today.toISOString().split('T')[0];
+        const formOrderDate = document.getElementById('form-order-date');
+        const detailOrderDate = document.getElementById('detail-order-date');
+
+        deliveryDateInput.value = date.toISOString().split('T')[0];
+        formOrderDate.value = date.toISOString().split('T')[0];
+        detailOrderDate.textContent = deliveryDateInput.value; // Set initial value
+
+        deliveryDateInput.addEventListener('input', function() {
+            detailOrderDate.textContent = deliveryDateInput.value;
+        });
+        formOrderDate.addEventListener('input', function() {
+            detailOrderDate.textContent = formOrderDate.value;
+        });
 
         var map = L.map('map').setView([-7.250445, 112.768845], 13);
 
@@ -199,6 +247,8 @@
 
                         // Isi input dan tampilkan ke <p>
                         document.getElementById('location_address').value = location_address;
+                        document.getElementById('form-order-location').value = location_address;
+
                         document.getElementById('display-address').innerText = location_address;
                         document.getElementById('detail-order-location').innerText = location_address;
                     } else {

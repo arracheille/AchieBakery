@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('choose_your_moments', function (Blueprint $table) {
-            $table->id();
+        Schema::create('moments', function (Blueprint $table) {
+            $table->string('id_moment', 10)->primary();
+            $table->string('moment_img');
+            $table->string('moment_name');
+            $table->text('moment_description');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('choose_your_moments');
+        Schema::dropIfExists('moments');
     }
 };

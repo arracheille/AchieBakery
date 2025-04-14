@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('user_id', 10);
             $table->string('location_name');
             $table->text('location_address');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 10, 8);
+            $table->decimal('latitude');
+            $table->decimal('longitude');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id_user')->on('users')->onDelete('cascade');

@@ -15,8 +15,11 @@ return new class extends Migration
             $table->string('id_order', 10)->primary();
             $table->string('user_id', 10);
             $table->string('address_id', 10);
+            $table->date('delivery_date');
+            $table->text('note')->nullable();
+            $table->enum('method', ['COD', 'Qris'])->default('COD');
             $table->enum('status', ['pending', 'on_delivery', 'delivered'])->default('pending');
-            $table->decimal('total_price');
+            $table->integer('total_price');
             
             $table->foreign('user_id')->references('id_user')->on('users')->onDelete('cascade');
             $table->foreign('address_id')->references('id_address')->on('addresses')->onDelete('cascade');

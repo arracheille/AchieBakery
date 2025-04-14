@@ -30,13 +30,14 @@
               ><i class="fa-solid fa-magnifying-glass"></i
             ></a>
           </li>
-          <li>
-            <a href="#" class="btn-icon"
-              ><i class="fa-solid fa-cart-shopping"></i
-            ></a>
-          </li>
           @if (Route::has('login'))
             @auth
+              <li>
+                <a href="{{ route('cart.index') }}" class="btn-icon"
+                  ><i class="fa-solid fa-cart-shopping"></i
+                ></a>
+              </li>
+
               <li>
                 <a href="{{ route('profile.edit') }}" class="btn-icon"><i class="fa-solid fa-user"></i></a>
               </li>
@@ -49,8 +50,14 @@
                                     this.closest('form').submit();">
                     {{ __('Keluar') }}
                 </a>
-            </form>
+              </form>
             @else
+              <li>
+                <a href="{{ route('login') }}" class="btn-icon"
+                  ><i class="fa-solid fa-cart-shopping"></i
+                ></a>
+              </li>
+
               <li>
                 <a href="{{ route('login') }}" class="btn-icon"><i class="fa-solid fa-user"></i></a>
               </li>

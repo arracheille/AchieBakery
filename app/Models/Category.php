@@ -15,6 +15,10 @@ class Category extends Model
     protected $fillable = ['id_category', 'category_img', 'category_name', 'category_description'];
 
     public function products() {
-        return $this->hasMany(Product::class, 'product_id');
+        return $this->hasMany(Product::class, 'category_id');
+    }
+
+    public function momentcategories() {
+        return $this->hasMany(MomentCategory::class, 'category_id');
     }
 }

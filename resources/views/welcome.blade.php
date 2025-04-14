@@ -21,7 +21,7 @@
                 </div>
               </div>
               <div class="hero-img-shader"></div>
-              <img src="assets/img/Katalog/brownies hero.jpg" alt="" />
+              <img src="{{ asset('catalog_images/Brownies/IMG20211031064451.jpg') }}" alt="" />
             </div>
             <div class="stock-ticker">
               <ul>
@@ -219,7 +219,7 @@
             </a>
           @endforeach
         </div>
-          <a href="#" class="underline">Tampilkan Lebih Banyak</a>
+          <a href="{{ route('category.index') }}" class="underline">Tampilkan Lebih Banyak</a>
         </div>
       </section>
   
@@ -246,12 +246,14 @@
             </div>
             <div class="carousel">
               @foreach ($categories as $category)
+              <a href="{{ route('category-item.index', ['category' => $category->id_category]) }}">
                 <div class="carousel-item">
                   <div class="category-image">
                     <img src="{{ asset($category->category_img) }}" alt="{{ $category->category_img }}" />
                   </div>
                   <h4>{{ $category->category_name }}</h4>
                 </div>
+              </a>
               @endforeach
             </div>
           </div>
@@ -267,7 +269,7 @@
             </p>
           </div>
           <a
-            href="#"
+            href="{{ route('cym.index' )}}"
             class="underline"
             data-aos="fade-down"
             data-aos-duration="700"
@@ -279,30 +281,16 @@
             data-aos-easing="ease-in-back"
             data-aos-duration="700"
           >
-            <div class="item">
-              <div class="cym-image">
-                <img src="assets/img/Katalog/cake ungu 17.jpg" alt="" />
+            @foreach ($moments as $moment)
+            <a href="{{ route('cym.item', ['moment' => $moment->id_moment]) }}">
+              <div class="item">
+                <div class="cym-image">
+                  <img src="{{ asset( $moment->moment_img ) }}" alt="" />
+                </div>
+                <h4>{{ $moment->moment_name }}</h4>
               </div>
-              <h4>Party</h4>
-            </div>
-            <div class="item">
-              <div class="cym-image">
-                <img src="assets/img/Katalog/cake ungu 17.jpg" alt="" />
-              </div>
-              <h4>Party</h4>
-            </div>
-            <div class="item">
-              <div class="cym-image">
-                <img src="assets/img/Katalog/cake ungu 17.jpg" alt="" />
-              </div>
-              <h4>Party</h4>
-            </div>
-            <div class="item">
-              <div class="cym-image">
-                <img src="assets/img/Katalog/cake ungu 17.jpg" alt="" />
-              </div>
-              <h4>Party</h4>
-            </div>
+            </a>
+            @endforeach
           </div>
         </div>
       </section>

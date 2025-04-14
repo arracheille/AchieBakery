@@ -1,15 +1,15 @@
 <aside class="sidebar">
-    <div class="sidebar-logo">
+    <a href="{{ route('welcome.admin') }}" class="sidebar-logo">
         <img src="{{ asset('assets/img/Logo/Logo Achie Bakery.png') }}" alt="Navbar Logo" />
         <h4>Achie Bakery</h4>
-    </div>
+    </a>
     <hr />
     <ul>
         <li>
-            <a href="#"
-            ><i class="fa-solid fa-house"></i>
-            <span class="text a-poppins">Dashboard</span></a
-            >
+            <a href="{{ route('welcome.admin') }}" class="{{ Request::routeIs('welcome.admin') ? 'active' : '' }}">
+                <i class="fa-solid fa-house"></i>
+                <span class="text a-poppins">Dashboard</span>
+            </a>
         </li>
         
         <li>
@@ -28,28 +28,28 @@
         </li>
         
         <li>
-            <a href="#"
+            <a href="{{ route('admin-order.index') }}" class="{{ Request::routeIs('admin-order.index') ? 'active' : '' }}"
             ><i class="fa-solid fa-box-open"></i>
             <span class="text a-poppins">Pesanan</span></a
             >
         </li>
         
         <li>
-            <a href="{{ route('calendar.index') }}"
+            <a href="{{ route('calendar.index') }}" class="{{ Request::routeIs('calendar.index') ? 'active' : '' }}"
             ><i class="fa-solid fa-calendar-days"></i>
             <span class="text a-poppins">Kalender</span></a
             >
         </li>
         
-        <li>
+        {{-- <li>
             <a href="#"
             ><i class="fa-solid fa-cart-plus"></i>
             <span class="text a-poppins">Buat Pesanan</span></a
             >
-        </li>
+        </li> --}}
         
         <li>
-            <a href="#"
+            <a href="{{ route('admin-user.index') }}" class="{{ Request::routeIs('admin-user.index') ? 'active' : '' }}"
             ><i class="fa-solid fa-users"></i>
             <span class="text a-poppins">Pengguna</span></a
             >

@@ -12,13 +12,13 @@ class Address extends Model
 
     protected $keyType = 'string';
 
-    protected $fillable = ['id_address', 'user_id', 'location_name', 'latitude', 'longitude'];
+    protected $fillable = ['id_address', 'user_id', 'location_name', 'location_address', 'latitude', 'longitude'];
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function address() {
+    public function orders() {
         return $this->hasMany(Order::class, 'address_id');
     }
 }

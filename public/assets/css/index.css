@@ -1,8 +1,8 @@
 :root {
-    --dark-brown: #45171d;
-    --dark-pink: #a5514b;
-    --pink: #ffccd2;
-    --cream: #fff3f3;
+    --dark-brown: #4f0e0e;
+    --dark-pink: #a54b4f;
+    --pink: #ffdada;
+    --cream: #fff1f1;
 
     --shadow-40: rgba(69, 23, 29, 0.4);
     --shadow-60: rgba(69, 23, 29, 0.6);
@@ -83,7 +83,9 @@ img {
     object-fit: cover;
     object-position: center;
 }
-.btn {
+.btn,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
     padding: 6px 20px;
     background-color: var(--dark-pink);
     border-radius: var(--border-5);
@@ -251,10 +253,10 @@ header nav .nav-container {
 header nav ul {
     gap: 15px;
 }
-header nav ul li{
+header nav ul li {
     padding-block: 5px;
 }
-header nav ul li.active{
+header nav ul li.active {
     border-bottom: 2px solid var(--dark-brown);
 }
 header nav .nav-links .nav-link a {
@@ -269,7 +271,7 @@ header nav .nav-logo {
 header nav .nav-logo img {
     width: 35px;
 }
-header nav a.btn.logout{
+header nav a.btn.logout {
     cursor: pointer;
 }
 .underline {

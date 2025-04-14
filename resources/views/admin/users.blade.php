@@ -4,7 +4,7 @@
 <main class="content">
     <div class="heading-buttons">
         <h3>Pesanan Pengguna</h3>
-        {{-- <div class="buttons-container">
+        <div class="buttons-container">
             <button class="btn" onclick="openAddModal()">Tambahkan Data</button>
             <div class="input-container">
                 <input
@@ -14,34 +14,36 @@
                     autocomplete="off"
                 />
             </div>
-        </div> --}}
+        </div>
     </div>
     <table id="adminTable" class="admin-table">
         <thead>
             <tr>
-                <th>ID Pesanan</th>
-                <th>ID User</th>
-                <th>ID Alamat</th>
-                <th>Tanggal Pengiriman</th>
-                <th>Metode Pembayaran</th>
-                <th>Total Harga</th>
-                <th>Status</th>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Tipe</th>
+                <th>Email</th>
+                <th>Nomor Telepon</th>
+                <th>Email Terverivikasi Pada</th>
+                <th>Token Ingat</th>
+                <th>Password</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($orders as $order)
+            @forelse ($users as $user)
                 <tr>
-                    <td>{{ $order->id_order }}</td>
-                    <td>{{ $order->user_id }}</td>
-                    <td>{{ $order->address_id }}</td>
-                    <td>{{ $order->delivery_date }}</td>
-                    <td>{{ $order->method }}</td>
-                    <td>{{ $order->total_price }}</td>
-                    <td>{{ $order->status }}</td>
+                    <td>{{ $user->id_user }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->usertype }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->phone_number }}</td>
+                    <td>{{ $user->email_verified_at }}</td>
+                    <td>{{ $user->remember_token }}</td>
+                    <td>{{ $user->password }}</td>
                     <td>
                         <span class="action">
-                            <button onclick="openEditModal('{{ $order->id_order }}')" class="btn-icon">
+                            <button onclick="openEditModal('{{ $user->id_user }}')" class="btn-icon">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
                             <a href="#" class="btn-icon">
@@ -50,7 +52,6 @@
                         </span>
                     </td>
                 </tr>
-                @include('components.modals.admin.order.edit-order')
             @empty
                 <tr>
                     <td colspan="7">Belum ada data pesanan!</td>
@@ -61,14 +62,3 @@
 </main>
 
 @include('components.datatable-script')
-
-<script>
-    function openEditModal(id) {
-        document.getElementById('editOrderModal-' + id).style.display = 'block';
-        document.getElementById('editOrderId-' + id).value = id;
-    }
-
-    function closeEditModal(id) {
-        document.getElementById('editOrderModal-' + id).style.display = 'none';
-    }
-</script>

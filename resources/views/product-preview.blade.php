@@ -1,8 +1,16 @@
 <x-guest-layout>
+  <head>
+    <style>
+      .carousel-nav {
+      justify-content: end;
+      gap: 10px;
+      }
+    </style>
+  </head>
     <section class="product-preview">
         <div class="section-container product-preview">
           <span
-            ><a href="#">Menu</a> > <a href="#">{{ $product->category->category_name }}</a> >
+            ><a href="{{ route('category.index') }}">Menu</a> > <a href="{{ route('category-item.index', ['category' => $product->category->id_category]) }}">{{ $product->category->category_name }}</a> >
             <a href="#">{{ $product->product_name }}</a></span
           >
           <div class="product-preview-container">
@@ -59,27 +67,55 @@
                 </label>
               </div> --}}
               <div class="actions">
-                <form action="{{ route('cart.store') }}" method="POST">
-                  @csrf
-
-                  <input type="hidden" name="product_id" value="{{ $product->id_product }}">
-
-                  <div class="quantity-chat">
-                    <div class="item-quantity">
-                      <button type="button" class="increase-btn" id="increase-btn" ><i class="fa-solid fa-plus"></i></button>
-                      <div class="input-container">
-                          <input type="number" name="quantity" id="quantity" value="1" min="1">
+                @if (Route::has('login'))
+                  @auth
+                  <form action="{{ route('cart.store') }}" method="POST">
+                    @csrf
+  
+                    <input type="hidden" name="product_id" value="{{ $product->id_product }}">
+  
+                    <div class="quantity-chat">
+                      <div class="item-quantity">
+                        <button type="button" class="increase-btn" id="increase-btn" ><i class="fa-solid fa-plus"></i></button>
+                        <div class="input-container">
+                            <input type="number" name="quantity" id="quantity" value="1" min="1">
+                        </div>
+                        <button type="button" class="decrease-btn" id="decrease-btn" ><i class="fa-solid fa-minus"></i></button>
                       </div>
-                      <button type="button" class="decrease-btn" id="decrease-btn" ><i class="fa-solid fa-minus"></i></button>
+                      <a href="#" class="btn-icon"
+                        ><i class="fa-solid fa-comment-dots"></i>
+                      </a>
                     </div>
-                    <a href="#" class="btn-icon"
-                      ><i class="fa-solid fa-comment-dots"></i>
+  
+                    <button class="btn cart">Masukkan ke Keranjang</button>
+                  </form>
+                  @else
+                    <div class="quantity-chat">
+                      <div class="item-quantity">
+                        <button type="button" class="increase-btn" id="increase-btn" ><i class="fa-solid fa-plus"></i></button>
+                        <div class="input-container">
+                            <input type="number" name="quantity" id="quantity" value="1" min="1">
+                        </div>
+                        <button type="button" class="decrease-btn" id="decrease-btn" ><i class="fa-solid fa-minus"></i></button>
+                      </div>
+                      <a href="#" class="btn-icon"
+                        ><i class="fa-solid fa-comment-dots"></i>
+                      </a>
+                    </div>
+                    <a href="{{ route('login') }}">
+                      <button class="btn cart">Masukkan ke Keranjang</button>
                     </a>
-                  </div>
-
-                  <button class="btn cart">Masukkan ke Keranjang</button>
-                </form>
-                <button class="btn">Pesan Sekarang</button>
+                  @endauth
+                @endif
+                {{-- @if (Route::has('login'))
+                  @auth
+                  <button class="btn">Pesan Sekarang</button>
+                  @else
+                  <a href="{{ route('login') }}">
+                    <button class="btn">Pesan Sekarang</button>
+                  </a>
+                  @endauth
+                @endif --}}
               </div>
             </div>
           </div>

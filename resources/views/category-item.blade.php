@@ -13,11 +13,11 @@
           </style>      
     </head>
 
-    <section class="{{ $category->name }}">
-        <div class="section-container brownies">
+    <section class="{{ $category->category_name }}">
+        <div class="section-container {{ $category->category_name }}">
           <div class="heading-filter">
             <div class="heading-text">
-              <h2 data-aos="fade-down" data-aos-duration="500">{{ $category->name }}</h2>
+              <h2 data-aos="fade-down" data-aos-duration="500">{{ $category->category_name }}</h2>
               <p data-aos="fade-down" data-aos-duration="600">
                 {{ $category->category_description }}
               </p>

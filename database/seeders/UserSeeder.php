@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             [
                 'id_user' => 'USR-0001',
                 'name' => 'Aqilla Rachel Rabbani',
+                'usertype' => 'user',
                 'email' => 'arachelrabbani@gmail.com',
                 'phone_number' => '085879334272',
                 'password' => Hash::make('acelacel'),
@@ -28,7 +29,8 @@ class UserSeeder extends Seeder
             ],
             [
                 'id_user' => 'USR-0002',
-                'name' => 'Ilmanza Hardian',
+                'name' => 'Acwel',
+                'usertype' => 'admin',
                 'email' => '541221037@student.smktelkom-pwt.sch.id',
                 'phone_number' => '081296680685',
                 'password' => Hash::make('acelacel'),

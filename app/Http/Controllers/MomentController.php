@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ChooseYourMomentController extends Controller
+class MomentController extends Controller
 {
     //
 }
