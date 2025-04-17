@@ -46,15 +46,7 @@
             data-aos-duration="700">
 
             @foreach ($category->products as $product)
-                <div class="product-content">
-                    <div class="product-img">
-                        <img src="{{ asset($product->product_img) }}" alt="{{ $product->product_img }}" />
-                    </div>
-                    <div class="product-info">
-                    <h4>{{ $product->product_name }}</h4>
-                    <p>Rp. {{ $product->product_price }}</p>
-                    </div>
-                </div>
+              @include('partials.product-list')
             @endforeach
           </div>
         </div>

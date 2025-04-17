@@ -27,10 +27,9 @@
     <section class="first-section myorder">
         <div class="section-container">
             <h2>Pesanan Anda</h2>
-        
             <div class="checkout-items">
                 <div class="cart-product-container">
-                    @forelse ($orders as $order)
+                    @forelse ($orders->where('user_id', Auth::user()->id_user) as $order)
                     <div class="cart-product-container">
                         @foreach ($order->orderproducts as $orderproducts)
                         <div class="cart-product-content">

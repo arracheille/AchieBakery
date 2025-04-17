@@ -40,43 +40,39 @@ class CategoryController extends Controller
         return redirect()->route('category.index')->with('success', 'Category successfully added!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Category $category)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Category $category)
     {
         return view('category.index', ['category' => $category]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Category $category)
     {
-        $categories = $request->validate([
-            'category_name' => 'required|string|max:255',
-            'category_description' => 'required|string',
+        $validated = $request->validate([
+            'category_name' => 'required|string',
+            'category_img' => 'nullable|image|mimes:jpeg,png,jpg',
         ]);
+    
+        if ($request->hasFile('category_img')) {
+            // hapus gambar lama kalau ada
+            if ($category->category_img && file_exists(public_path($category->category_img))) {
+                unlink(public_path($category->category_img));
+            }
+    
+            $imageName = time().'.'.$request->category_img->extension();
+            $request->category_img->move(public_path('category_img'), $imageName);
+            $validated['category_img'] = 'category_img/'.$imageName;
+        } else {
+            // JANGAN ubah nilai category_img kalau tidak ada file baru
+            unset($validated['category_img']);
+        }
+    
+        $category->update($validated);
+    
+        return redirect()->route('category.index')->with('success', 'Kategori berhasil diubah');
+    }    
 
-        $categories['category_name'] = strip_tags($categories['category_name']);        
-        $categories['category_description'] = strip_tags($categories['category_description']);
-        $category->update($categories);
-        return redirect(route('category.index'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Category $category)
-    {
-        //
+    public function destroy(Category $category) {
+        $category->delete();
+        return back();
     }
 }

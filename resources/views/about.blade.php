@@ -91,14 +91,14 @@
                 Tengah. Kami melayani pemesanan untuk area sekitar dan siap
                 mengantarkan ke berbagai lokasi sesuai permintaan pelanggan.
               </p>
-              <a href="#" class="btn">Lihat Lokasi</a>
+              <a href="https://maps.app.goo.gl/KYxGSFabwPb4aBSs9" class="btn">Lihat Lokasi</a>
             </div>
           </div>
           <div class="about-content-center contact">
             <h2>Hubungi Kami di</h2>
             <ul class="contact-container">
               <li class="contact-content">
-                <a href="#" class="btn-icon"
+                <a href="https://www.instagram.com/achiehandhito?igsh=MTk4ZWg5MzFic2kzaw==" class="btn-icon"
                   ><i class="fa-brands fa-instagram"></i
                 ></a>
               </li>
@@ -108,12 +108,9 @@
                 ></a>
               </li>
               <li class="contact-content">
-                <a href="#" class="btn-icon"
+                <a href="https://wa.me/6287737187324" class="btn-icon"
                   ><i class="fa-brands fa-whatsapp"></i
                 ></a>
-              </li>
-              <li class="contact-content">
-                <a href="#" class="btn-icon"><i class="fa-solid fa-at"></i></a>
               </li>
             </ul>
           </div>

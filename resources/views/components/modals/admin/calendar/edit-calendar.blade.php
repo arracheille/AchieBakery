@@ -1,5 +1,5 @@
 @foreach ($orders as $order)
-<div id="editorderModal-{{ $order->id_order }}" class="modal">
+<div id="editOrderModal-{{ $order->id_order }}" class="modal">
     <div class="modal-content">
         <div class="modal-title-close">
             <h2>Order Details</h2>
@@ -13,7 +13,7 @@
             <input type="text" name="customer_name" id="customer_name" value="{{ $order->customer_name }}" placeholder="Example : Meeting With Company A">
 
             <label for="delivery_date">Delivery Date :</label>
-            <input type="datetime-local" name="delivery_date" id="delivery_date" value="{{ $order->delivery_date }}">
+            <input type="datetime-local" value="{{ \Carbon\Carbon::parse($order->tanggal)->format('Y-m-d\TH:i') }}">
 
             <div class="modal-footer">
                 <button type="button" class="btn" onclick="closeEditorder({{ $order->id_order }})">

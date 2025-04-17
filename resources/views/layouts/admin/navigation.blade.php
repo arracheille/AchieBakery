@@ -6,13 +6,13 @@
                 <h4>Achie Bakery Admin</h4>
             </div>
             <ul class="nav-buttons">
-                <li>
+                {{-- <li>
                     <a href="#" class="btn-icon"
                     ><i class="fa-solid fa-magnifying-glass"></i
                     ></a>
-                </li>
+                </li> --}}
                 <li>
-                    <a href="#" class="btn-icon"><i class="fa-solid fa-user"></i></a>
+                    <a href="{{ route('user-profile.index') }}" class="btn-icon"><i class="fa-solid fa-user"></i></a>
                 </li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}">

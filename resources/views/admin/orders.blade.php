@@ -4,17 +4,6 @@
 <main class="content">
     <div class="heading-buttons">
         <h3>Pesanan Pengguna</h3>
-        {{-- <div class="buttons-container">
-            <button class="btn" onclick="openAddModal()">Tambahkan Data</button>
-            <div class="input-container">
-                <input
-                    type="text"
-                    id="search"
-                    placeholder="Cari Data..."
-                    autocomplete="off"
-                />
-            </div>
-        </div> --}}
     </div>
     <table id="adminTable" class="admin-table">
         <thead>

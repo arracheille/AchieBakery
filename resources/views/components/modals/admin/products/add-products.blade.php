@@ -65,7 +65,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn" onclick="closeAddProduct()">>
+                <button type="button" class="btn" onclick="closeAddProduct()">
                     Cancel
                 </button>
                 

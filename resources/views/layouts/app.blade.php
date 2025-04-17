@@ -34,6 +34,21 @@
 
         <script>
             AOS.init();
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const checkbox = document.getElementById('search-toggle');
+                const searchContainer = document.querySelector('.search-container');
+
+                searchContainer.style.display = 'none';
+
+                checkbox.addEventListener('change', function () {
+                if (checkbox.checked) {
+                    searchContainer.style.display = 'block';
+                } else {
+                    searchContainer.style.display = 'none';
+                }
+                });
+            });
         </script>
     </body>
 </html>

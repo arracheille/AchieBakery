@@ -24,7 +24,7 @@
                     </p>                    
                     </div>
                     <div class="cart-product-container">
-                        @foreach ($carts->where('user_id', Auth::user()->id_user) as $cart)
+                        @forelse ($carts->where('user_id', Auth::user()->id_user) as $cart)
                         <div class="cart-product-content">
                             <form action="{{ route('cart.edit', ['checklist' => $cart->id_cart]) }}" id="checklist-item-check{{ $cart->id_cart }}">
                                 <input type="checkbox" class="itemCheckbox" id="checklist{{ $cart->id_cart }}" onchange="checklist('{{ $cart->id_cart }}')" name="is_checked" value="{{ $cart->is_checked }}" {{ $cart->is_checked == 1 ? 'checked' : '' }}/>
@@ -60,7 +60,9 @@
                                 </button>
                             </form>
                         </div>
-                        @endforeach
+                        @empty
+                        <p>Anda belum menambahkan produk ke keranjang!</p>
+                        @endforelse
                     </div>
                 </div>
               <div class="cart-total-container">

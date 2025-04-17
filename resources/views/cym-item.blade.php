@@ -54,12 +54,14 @@
                     </div>
                     <div class="carousel">
                         @foreach ($moment_category->category->products as $product)
-                        <div class="carousel-item">
-                            <div class="category-image">
-                                <img src="{{ asset( $product->product_img ) }}" alt="{{ $product->product_name }}" />
-                            </div>
-                            <h4>{{ $product->product_name }}</h4>
-                        </div>
+                        <a href="{{ route('product-preview.index', ['product' => $product->id_product ])}}">
+                          <div class="carousel-item">
+                              <div class="category-image">
+                                  <img src="{{ asset( $product->product_img ) }}" alt="{{ $product->product_name }}" />
+                              </div>
+                              <h4>{{ $product->product_name }}</h4>
+                          </div>
+                        </a>          
                         @endforeach
                     </div>
                 </div>

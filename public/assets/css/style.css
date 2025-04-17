@@ -101,12 +101,33 @@ section.hero .section-container {
 .product-content {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+}
+.product-content:hover .product-img img {
+    transform: scale(1.1);
 }
 .product-img {
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
+}
+.product-img img{
+    transition: transform 0.3s ease;
+}
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.product-info h4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.product-info .text-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark-pink);
 }
 .categories,
 .transactions {
@@ -127,9 +148,9 @@ section.hero .section-container {
 .cym-container .item {
     display: flex;
     flex-direction: column;
+    gap: 15px;
     align-items: center;
     text-align: center;
-    justify-content: space-between;
 }
 .carousel-container {
     overflow: hidden;
@@ -163,7 +184,6 @@ section.hero .section-container {
     border-radius: 50%;
     cursor: pointer;
 }
-
 .cym-container .item {
     width: 16vw;
 }
@@ -176,7 +196,7 @@ section.hero .section-container {
 .cym-container {
     display: flex;
     gap: 10px;
-    justify-content: center;
+    justify-content: space-between;
 }
 .transaction-container {
     display: flex;
@@ -468,4 +488,11 @@ section.recommends {
 }
 .modal-content form .modal-footer {
     margin-top: 20px;
+}
+.modal-content label {
+    color: var(--cream) !important;
+}
+.modal-content img {
+    max-width: 15vw;
+    aspect-ratio: 1 / 1;
 }

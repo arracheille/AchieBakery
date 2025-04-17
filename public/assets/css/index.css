@@ -274,6 +274,34 @@ header nav .nav-logo img {
 header nav a.btn.logout {
     cursor: pointer;
 }
+.search-container {
+    display: none;
+    width: 85%;
+    margin: auto;
+    padding-bottom: 10px;
+    transition: all 0.3s ease;
+}
+.search-container form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+.search-container form .input-container {
+    width: 100%;
+}
+.search-container form .input-container input {
+    border-bottom: none;
+}
+.search-container form .btn-icon {
+    background-color: var(--pink);
+    color: var(--dark-brown);
+}
+.nav-buttons li #search-toggle {
+    display: none;
+}
 .underline {
     text-decoration: underline;
     text-align: center;

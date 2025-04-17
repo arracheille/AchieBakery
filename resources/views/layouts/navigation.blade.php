@@ -16,7 +16,7 @@
             <li class="nav-link {{ Request::is('category*') ? 'active' : '' }}">
               <a href="{{ route('user.category.index') }}">Kategori</a>
             </li>
-            <li class="nav-link {{ Request::is('choose-your-moments*') ? 'active' : '' }}">
+            <li class="nav-link {{ Request::is('choose-your-moment*') ? 'active' : '' }}">
               <a href="{{ route('cym.index') }}">Pilih Momenmu</a>
             </li>
             <li class="nav-link {{ Request::is('about*') ? 'active' : '' }}">
@@ -26,20 +26,16 @@
         </div>
         <ul class="nav-buttons">
           <li>
-            <a href="#" class="btn-icon"
-              ><i class="fa-solid fa-magnifying-glass"></i
-            ></a>
+            <input type="checkbox" name="search-toggle" id="search-toggle">
+            <label for="search-toggle" class="btn-icon" style="cursor: pointer;">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
           </li>
+
           @if (Route::has('login'))
             @auth
               <li>
-                <a href="{{ route('cart.index') }}" class="btn-icon"
-                  ><i class="fa-solid fa-cart-shopping"></i
-                ></a>
-              </li>
-
-              <li>
-                <a href="{{ route('profile.edit') }}" class="btn-icon"><i class="fa-solid fa-user"></i></a>
+                <a href="{{ route('user-profile.index') }}" class="btn-icon"><i class="fa-solid fa-user"></i></a>
               </li>
 
               <form method="POST" action="{{ route('logout') }}">
@@ -70,6 +66,17 @@
             @endauth
           @endif
         </ul>
+      </div>
+
+      <div class="search-container">
+        <form action="{{ route('search.index') }}" method="GET" class="search-form">
+            <div class="input-container">
+              <input type="text" name="search" id="search" placeholder="Cari produk..." class="search-input" value="{{ request('search') }}" autocomplete="off">
+            </div>
+            <button class="btn-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
       </div>
     </nav>
 </header>

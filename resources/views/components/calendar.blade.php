@@ -18,38 +18,13 @@
       initialDate: formattedToday,
       navLinks: true,
       selectable: true,
-      selectMirror: true,
-      select: function (arg) {
-        console.log(arg.startStr);
-        var DeliveryDate = new Date(arg.startStr);
-        
-        DeliveryDate.setDate(DeliveryDate.getDate() + 3);
-
-        var hours = DeliveryDate.getHours();
-        var minutes = DeliveryDate.getMinutes();
-
-        DeliveryDate.setHours(hours, minutes);
-
-        var DeliveryDateString = DeliveryDate.toISOString().slice(0, 16);
-
-        document.getElementById('delivery_date').value = DeliveryDate.toISOString().slice(0, 16);
-
-        // openAddcalendar();
-        calendar.unselect();
-      },
+      editable: false,
+      dayMaxEvents: true,
+      events: @json($orders),
       eventClick: function (arg) {
         var calendarId = arg.event.id;
         openEditcalendar(calendarId);
       },
-      editable: false,
-      dayMaxEvents: true,
-      events: @json($orders),
-      eventDidMount: function(info) {
-        var backgroundColorId = info.event.extendedProps.background_color;
-        if (backgroundColorId) {
-            info.el.id = backgroundColorId;
-        }
-      }
     });
     calendar.render();
   });

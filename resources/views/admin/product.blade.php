@@ -5,15 +5,7 @@
     <div class="heading-buttons">
         <h3>Kategori {{ $category->category_name }}</h3>
         <div class="buttons-container">
-            <button class="btn" onclick="openAddProduct()">Tambahkan Data</button>
-            {{-- <div class="input-container">
-                <input
-                    type="text"
-                    id="search"
-                    placeholder="Cari Data..."
-                    autocomplete="off"
-                />
-            </div> --}}
+            <button class="btn" onclick="openAddProduct()">Tambahkan Produk</button>
         </div>
     </div>
     <table id="adminTable" class="admin-table">
@@ -43,15 +35,20 @@
                     <td>{{ $product->product_size }}</td>
                     <td>
                         <span class="action">
-                            <a href="#" class="btn-icon">
+                            <button onclick="openEditProduct('{{ $product->id_product }}')" class="btn-icon" >
                                 <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-                            <a href="#" class="btn-icon">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </a>
+                            </button>
+                            <form action="{{ route('product.delete', ['product' => $product->id_product]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn-icon">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </form>
                         </span>
                     </td>
                 </tr>
+                @include('components.modals.admin.products.edit-product')
             @empty
                 <tr>
                     <td colspan="7">Belum ada data produk dari kategori ini!</td>
@@ -71,5 +68,14 @@
 
     function closeAddProduct() {
         document.getElementById('addProductModal').style.display = 'none';
+    }
+
+    function openEditProduct(id) {
+        document.getElementById('editProductModal-' + id).style.display = 'block';
+        document.getElementById('editProductId-' + id).value = id;
+    }
+
+    function closeEditProduct(id) {
+        document.getElementById('editProductModal-' + id).style.display = 'none';
     }
 </script>

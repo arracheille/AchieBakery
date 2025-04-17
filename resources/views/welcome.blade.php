@@ -12,7 +12,7 @@
                     Pesan cake, roti, cookies, dan lainnya di rumah.
                   </p>
                   <a
-                    href="#"
+                    href="{{ route('user.category.index') }}"
                     class="btn"
                     data-aos="fade-down"
                     data-aos-duration="1200"
@@ -206,17 +206,7 @@
             data-aos-duration="700"
           >
           @foreach ($products->shuffle()->take(8) as $product)
-            <a href="{{ route('product-preview.index', ['product' => $product->id_product ])}}">
-              <div class="product-content">
-                <div class="product-img">
-                  <img src="{{ asset ($product->product_img) }}" alt="welcome-best-seller{{ $product->product_img }}" />
-                </div>
-                <div class="product-info">
-                  <h4>{{ $product->product_name }}</h4>
-                  <p>Rp. {{ $product->product_price }}</p>
-                </div>
-              </div>
-            </a>
+            @include('partials.product-list')
           @endforeach
         </div>
           <a href="{{ route('category.index') }}" class="underline">Tampilkan Lebih Banyak</a>

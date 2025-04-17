@@ -89,13 +89,13 @@ header nav .main-nav {
 .admin-table thead {
     background-color: var(--pink);
 }
-.admin-table tr {
-    background-color: var(--cream);
-}
 .admin-table th,
 .admin-table td {
     border: solid 1px var(--dark-brown);
     padding: 10px;
+}
+.admin-table td {
+    background-color: var(--cream);
 }
 .admin-table td .product-img {
     width: 12vw;

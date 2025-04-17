@@ -5,7 +5,7 @@
             <span class="close" onclick="closeEditCategory('{{ $category->id_category }}')">&times;</span>
         </div>
 
-        <form action="{{ route('category.edit', ['category' => $category->id_category]) }}" method="POST">
+        <form action="{{ route('category.edit', ['category' => $category->id_category]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -22,7 +22,6 @@
                     id="category_img"
                     name="category_img"
                     autocomplete="off"
-                    required
                 />
             </div>
 

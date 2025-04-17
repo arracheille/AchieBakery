@@ -1,21 +1,14 @@
 @include('layouts.admin.index')
+@include('components.datatable')
 
 <main class="content">
     <div class="heading-buttons">
-        <h3>Pesanan Pengguna</h3>
+        <h3>Kategori Produk</h3>
         <div class="buttons-container">
-            <button class="btn" onclick="openAddCategory()">Tambahkan Data</button>
-            <div class="input-container">
-                <input
-                    type="text"
-                    id="search"
-                    placeholder="Cari Data..."
-                    autocomplete="off"
-                />
-            </div>
+            <button class="btn" onclick="openAddCategory()">Tambahkan Kategori</button>
         </div>
     </div>
-    <table class="admin-table">
+    <table id="adminTable" class="admin-table">
         <thead>
             <th>ID Kategori</th>
             <th>Gambar Kategori</th>
@@ -38,9 +31,13 @@
                         <button onclick="openEditCategory('{{ $category->id_category }}')" class="btn-icon" >
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
-                        <a href="#" class="btn-icon" >
-                            <i class="fa-solid fa-trash-can"></i>
-                        </a>
+                        <form action="{{ route('category.delete', ['category' => $category->id_category]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn-icon">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
                     </span>
                 </td>
             </tr>
@@ -53,6 +50,7 @@
 
 @include('components.modals.admin.category.add-category')
 
+@include('components.datatable-script')
 <script>
     function openAddCategory() {
         document.getElementById('addCategoryModal').style.display = 'block';
@@ -65,9 +63,6 @@
     function openEditCategory(id) {
         document.getElementById('editCategoryModal-' + id).style.display = 'block';
         document.getElementById('editCategoryId-' + id).value = id;
-
-        console.log(id);
-        
     }
 
     function closeEditCategory(id) {
