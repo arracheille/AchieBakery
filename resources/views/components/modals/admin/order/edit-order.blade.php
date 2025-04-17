@@ -13,14 +13,14 @@
 
             <label for="status">status :</label>
 
-            <select name="status" id="status">
+            {{-- <select name="status" id="status">
                 <option value="" disabled selected>
                   Urutkan berdasarkan..
                 </option>
                 <option value="pending">Pending</option>
                 <option value="on_delivery">Dalam Perjalanan</option>
                 <option value="delivered">Selesai</option>
-              </select>
+            </select> --}}
 
             <div class="modal-footer">
                 <button type="button" class="btn" onclick="closeEditCategory('{{ $order->id_order }}')">

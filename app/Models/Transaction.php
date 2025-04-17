@@ -12,7 +12,7 @@ class Transaction extends Model
 
     protected $keyType = 'string';
 
-    protected $fillable = ['id_transaction', 'order_id', 'method', 'order_proof'];
+    protected $fillable = ['id_transaction', 'order_id', 'order_proof'];
 
     public function orders() {
         return $this->belongsTo(Order::class, 'order_id');

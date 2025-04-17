@@ -57,15 +57,15 @@ Route::get('/product/{product}', function (Product $product) {
 })->name('product-preview.index');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/user-profile', function (User $user) {
+    Route::get('/my-orders', function (User $user) {
         $orders = Order::all();
-        return view('user-profile', compact('orders', 'user'));
-    })->name('user-profile.index');
+        return view('my-orders', compact('orders', 'user'));
+    })->name('my-orders.index');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+     
     Route::get('/cart', function () {
         $carts = Cart::all();
         return view('cart', compact('carts'));
@@ -163,7 +163,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/users', function () {
             $users = User::all();
             return view('admin.users', compact('users'));
-        })->name('admin-user.index');    
+        })->name('admin-user.index');
     });
 });
 

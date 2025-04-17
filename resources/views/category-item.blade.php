@@ -27,7 +27,7 @@
               data-aos="fade-down"
               data-aos-duration="500"
             >
-              <form action="">
+              {{-- <form action="">
                 <select>
                   <option value="" disabled selected>
                     Urutkan berdasarkan..
@@ -36,7 +36,7 @@
                   <option value="terlama">Terlama</option>
                   <option value="terpopuler">Terpopuler</option>
                 </select>
-              </form>
+              </form> --}}
             </div>
           </div>
           <div

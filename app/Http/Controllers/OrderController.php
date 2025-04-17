@@ -98,7 +98,7 @@ class OrderController extends Controller
             ->where('is_checked', 1)
             ->delete();
 
-        return redirect()->route('user-profile.index')->with('success', 'Order successfully created!');
+        return redirect()->route('my-orders.index')->with('success', 'Order successfully created!');
     }
 
     public function edit(Order $order)

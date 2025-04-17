@@ -12,7 +12,7 @@
                     ></a>
                 </li> --}}
                 <li>
-                    <a href="{{ route('user-profile.index') }}" class="btn-icon"><i class="fa-solid fa-user"></i></a>
+                    <a href="{{ route('profile.edit') }}" class="btn-icon"><i class="fa-solid fa-user"></i></a>
                 </li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}">

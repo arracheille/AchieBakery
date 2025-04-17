@@ -111,7 +111,7 @@ section.hero .section-container {
     aspect-ratio: 1 / 1;
     overflow: hidden;
 }
-.product-img img{
+.product-img img {
     transition: transform 0.3s ease;
 }
 .product-info {
@@ -370,7 +370,6 @@ section.recommends {
 .recommends p {
     color: var(--cream);
 }
-
 .cart-divider {
     display: flex;
     gap: 10vw;
@@ -437,6 +436,30 @@ section.recommends {
 }
 .cart-total-content hr {
     border: 1px solid var(--dark-brown);
+}
+.product-status-quantity {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: end;
+    align-items: end;
+    margin-left: auto;
+}
+.product-status {
+    padding: 10px;
+    border-radius: 5px;
+}
+.product-status.status-pending {
+    color: #a02334;
+    border: solid 1px #a02334;
+}
+.product-status.status-on-delivery {
+    color: #ffad60;
+    border: solid 1px #ffad60;
+}
+.product-status.status-delivered {
+    color: #96ceb4;
+    border: solid 1px #96ceb4;
 }
 .modal {
     display: none;

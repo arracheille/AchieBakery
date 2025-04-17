@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->string('id_transaction', 10)->primary();
             $table->string('order_id', 10);
-            $table->enum('method', ['cod', 'transfer_bri', 'take_to_location'])->default('COD');
             $table->string('order_proof');
             $table->timestamps();
 

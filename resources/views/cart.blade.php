@@ -72,7 +72,7 @@
                   <hr />
                   <h2>Rp. <span id="totalPrice">0</span></h2>
                 </div>
-                <a href="{{ route('checkout') }}" class="btn">Pesan</a>
+                <a href="{{ route('checkout.index') }}" class="btn">Pesan</a>
             </div>    
             </div>
         </div>

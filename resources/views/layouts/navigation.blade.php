@@ -35,7 +35,15 @@
           @if (Route::has('login'))
             @auth
               <li>
-                <a href="{{ route('user-profile.index') }}" class="btn-icon"><i class="fa-solid fa-user"></i></a>
+                <a href="{{ route('my-orders.index') }}" class="btn-icon"><i class="fa-solid fa-clipboard-list"></i></a>
+              </li>
+
+              <li>
+                <a href="{{ route('cart.index') }}" class="btn-icon"><i class="fa-solid fa-cart-shopping"></i></a>
+              </li>
+
+              <li>
+                <a href="{{ route('profile.edit') }}" class="btn-icon"><i class="fa-solid fa-user"></i></a>
               </li>
 
               <form method="POST" action="{{ route('logout') }}">
@@ -48,6 +56,10 @@
                 </a>
               </form>
             @else
+              <li>
+                <a href="{{ route('login') }}" class="btn-icon"><i class="fa-solid fa-clipboard-list"></i></a>
+              </li>
+
               <li>
                 <a href="{{ route('login') }}" class="btn-icon"
                   ><i class="fa-solid fa-cart-shopping"></i

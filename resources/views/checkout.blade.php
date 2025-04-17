@@ -67,7 +67,7 @@
                     <div id="map"></div>
                     <div class="cdc">
                         <p id="display-address"></p>
-                        <a href="#" class="btn">Ubah Lokasi</a>
+                        <button class="btn">Gunakan Transaksi Ambil ke Lokasi</button>
                     </div>
 
                     <hr>
@@ -107,14 +107,11 @@
 
                     <div class="payment-method">
                         <div class="variants-container">
-                            <input type="radio" id="option1" name="options" value="COD" checked/>
+                            <input type="radio" id="option1" name="options" value="cod" checked/>
                             <label for="option1" class="option-variants">COD</label>
             
-                            {{-- <input type="radio" id="option2" name="options" value="Qris" />
-                            <label for="option2" class="option-variants">Qris</label> --}}
-
-                            {{-- <input type="radio" id="option3" name="options" value="3" />
-                            <label for="option3" class="option-variants">Gopay</label> --}}
+                            <input type="radio" id="option2" name="options" value="transfer_bri" />
+                            <label for="option2" class="option-variants">Transfer BRI</label>
                         </div>
                     </div>
 
@@ -153,6 +150,7 @@
                     <input type="hidden" name="method" id="method" value="COD">
                     <input type="hidden" name="note" id="note">
 
+                    <input type="hidden" name="id_address" id="id_address">
                     <input type="hidden" name="latitude" id="latitude">
                     <input type="hidden" name="longitude" id="longitude">
                     <input type="hidden" name="location_address" id="form-order-location">
@@ -211,7 +209,7 @@
             detailOrderDate.textContent = formOrderDate.value;
         });
 
-        var map = L.map('map').setView([-7.250445, 112.768845], 13);
+        var map = L.map('map').setView([-7.323556, 109.329028], 13);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,

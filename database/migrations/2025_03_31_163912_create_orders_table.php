@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('address_id', 10);
             $table->date('delivery_date');
             $table->text('note')->nullable();
+            $table->enum('method', ['cod', 'transfer_bri'])->default('cod');
             $table->enum('status', ['pending', 'on_delivery', 'delivered'])->default('pending');
             $table->integer('total_price');
             
